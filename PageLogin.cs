@@ -51,8 +51,8 @@ namespace Capstone_Project
 
         public static void _LoginToAccount(IWebDriver driver)
         {
-            GlobalFunctions.FindElement(driver, "#Email", Constants.USERNAME, false, false);
-            GlobalFunctions.FindElement(driver, "#Password", Constants.PASSWORD, false, false);
+            GlobalFunctions.FindElement(driver, "#Email", Configuration.USERNAME, false, false);
+            GlobalFunctions.FindElement(driver, "#Password", Configuration.PASSWORD, false, false);
             GlobalFunctions.FindElement(
                 driver, 
                 "body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body > div.customer-blocks > div.returning-wrapper > div.form-fields > form > div.buttons > input",
@@ -72,13 +72,13 @@ namespace Capstone_Project
                 false
             );
 
-            if (element_text != Constants.USERNAME)
+            if (element_text != Configuration.USERNAME)
             {
                 throw new Exception(
                     $"TEST CASE FAILD: " +
                     $"The correct login details are not showing! " +
                     $"Actual: '{element_text}' " +
-                    $"Expected: '{Constants.USERNAME}' "
+                    $"Expected: '{Configuration.USERNAME}' "
                 );
             }
         }
