@@ -8,16 +8,16 @@ namespace Capstone_Project
         public static void CheckoutCart(ISikuliSession session, IWebDriver driver)
         {
 
-            Constants.ClickOnAPattern(2, "1_clc_cntry_base.png", session);
+            GlobalFunctions.ClickOnAPattern(2, "1_clc_cntry_base.png", session);
 
-            Constants.ClickOnAPattern(2, "2_slct_amrc_sm.png", session);
+            GlobalFunctions.ClickOnAPattern(2, "2_slct_amrc_sm.png", session);
 
-            Constants.ClickOnAPattern(2, "3_slct_zip_cd.png", session);
+            GlobalFunctions.ClickOnAPattern(2, "3_slct_zip_cd.png", session);
             session.Type("96799");
 
-            Constants.ClickOnAPattern(2, "4_clc_agree.png", session);
+            GlobalFunctions.ClickOnAPattern(2, "4_clc_agree.png", session);
 
-            Constants.ClickOnAPattern(2, "5_clc_chck_out.png", session);
+            GlobalFunctions.ClickOnAPattern(2, "5_clc_chck_out.png", session);
 
             if (driver.Url != Constants.CHECKOUT_PAGE_URL)
             {
@@ -29,7 +29,7 @@ namespace Capstone_Project
                 );
             }
 
-            string element_text = Constants.FindElement(
+            string element_text = GlobalFunctions.FindElement(
                 driver,
                 @"body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div > div > div.page-title > h1",
                 "",

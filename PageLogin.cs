@@ -18,7 +18,7 @@ namespace Capstone_Project
 
         public static void _ClickLoginLink(IWebDriver driver)
         {
-            Constants.FindElement(driver, @".ico-login", "", false, true);
+            GlobalFunctions.FindElement(driver, @".ico-login", "", false, true);
 
             if (driver.Url != Constants.LOGIN_PAGE_URL)
             {
@@ -34,7 +34,7 @@ namespace Capstone_Project
         public static void _VerifyLoginPage(IWebDriver driver)
         {
 
-            string element_text = Constants.FindElement(
+            string element_text = GlobalFunctions.FindElement(
                 driver,
                 @"body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body > div.customer-blocks > div.returning-wrapper > div.title > strong",
                 "",
@@ -55,9 +55,9 @@ namespace Capstone_Project
 
         public static void _LoginToAccount(IWebDriver driver)
         {
-            Constants.FindElement(driver, "#Email", Constants.USERNAME, false, false);
-            Constants.FindElement(driver, "#Password", Constants.PASSWORD, false, false);
-            Constants.FindElement(
+            GlobalFunctions.FindElement(driver, "#Email", Constants.USERNAME, false, false);
+            GlobalFunctions.FindElement(driver, "#Password", Constants.PASSWORD, false, false);
+            GlobalFunctions.FindElement(
                 driver, 
                 "body > div.master-wrapper-page > div.master-wrapper-content > div.master-wrapper-main > div.center-2 > div > div.page-body > div.customer-blocks > div.returning-wrapper > div.form-fields > form > div.buttons > input",
                 "",
@@ -68,7 +68,7 @@ namespace Capstone_Project
 
         public static void _VerifySuccessfulLogin(IWebDriver driver)
         {
-            string element_text = Constants.FindElement(
+            string element_text = GlobalFunctions.FindElement(
                 driver,
                 @"body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(1) > a",
                 "",

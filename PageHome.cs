@@ -21,7 +21,7 @@ namespace Capstone_Project
 
         public static void LogoClickLogoutClick(IWebDriver driver)
         {
-            Constants.FindElement(
+            GlobalFunctions.FindElement(
                 driver,
                 @"body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-logo > a > img",
                 "",
@@ -31,7 +31,7 @@ namespace Capstone_Project
 
             Thread.Sleep(500);
 
-            Constants.FindElement(
+            GlobalFunctions.FindElement(
                 driver,
                 @"body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a",
                 "",
