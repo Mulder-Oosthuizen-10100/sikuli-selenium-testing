@@ -157,6 +157,10 @@ namespace Capstone_Project
             {
                 return image_path += @"\img\chck_out\" + path;
             }
+            else if (choice == 'R')
+            {
+                return image_path += @"\rpt\" + path;
+            }
             else
             {
                 return "";

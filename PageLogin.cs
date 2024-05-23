@@ -6,14 +6,10 @@ namespace Capstone_Project
     {
         public static void Login(IWebDriver driver)
         {
-            Thread.Sleep(1000);
             _ClickLoginLink(driver);
-            Thread.Sleep(500);
             _VerifyLoginPage(driver);
             _LoginToAccount(driver);
-            Thread.Sleep(1000);
             _VerifySuccessfulLogin(driver);
-            Thread.Sleep(1000);
         }
 
         public static void _ClickLoginLink(IWebDriver driver)

@@ -1,3 +1,6 @@
+using AventStack.ExtentReports;
+using AventStack.ExtentReports.Model;
+using AventStack.ExtentReports.Reporter;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using SikuliSharp;
@@ -8,101 +11,131 @@ namespace Capstone_Project
     {
         ISikuliSession session;
         IWebDriver driver;
+        ExtentReports report;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
+            report = new ExtentReports();
+
+            var html_reporter = new ExtentSparkReporter(GlobalFunctions.BasePath('R', "Capstone Test Cases Report.html"));
+            report.AttachReporter(html_reporter);
+
             session = Sikuli.CreateSession();
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
         }
 
         [Test]
-        public void TCHome() // TC = Test_Case...
+        public void TC_1_Home() // TC = Test_Case...
         {
-            try { PageHome.OpenWebsite(driver); }
-            catch (Exception ex) { Assert.Fail(ex.Message); }
-        }
-
-        [Test]
-        public void TCLogin()
-        {
+            ExtentTest test = report.CreateTest("TEST CASE: Open Home Page");
             try
             {
                 PageHome.OpenWebsite(driver);
-                PageLogin.Login(driver);
+                test.Pass("TEST CASE PASSED");
             }
-            catch(Exception ex) { Assert.Fail(ex.Message); }
-        }
-
-        [Test]
-        public void TCJewelry()
-        {
-            try
+            catch (Exception ex) 
             {
-                PageHome.OpenWebsite(driver);
-                PageLogin.Login(driver);
-                PageJewelry.SelectCategoryJewelry(driver);
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message);
             }
-            catch (Exception ex) { Assert.Fail(ex.Message); }
         }
 
         [Test]
-        public void TCJewelryListView()
+        public void TC_2_Login()
         {
-            try
+            ExtentTest test = report.CreateTest("TEST CASE: Login to Website");
+            try 
             {
-                PageHome.OpenWebsite(driver);
                 PageLogin.Login(driver);
+                test.Pass("TEST CASE PASSED");
+            }
+            catch (Exception ex)
+            {
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [Test]
+        public void TC_3_Jewelry()
+        {
+            ExtentTest test = report.CreateTest("TEST CASE: Select Category Jewelry");
+            try 
+            {
                 PageJewelry.SelectCategoryJewelry(driver);
+                test.Pass("TEST CASE PASSED");
+            }
+            catch (Exception ex)
+            {
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message);
+            }
+        }
+
+        [Test]
+        public void TC_4_JewelryListView()
+        {
+            ExtentTest test = report.CreateTest("TEST CASE: Change View - List");
+            try 
+            {
                 PageJewelry.ChangeView(driver);
+                test.Pass("TEST CASE PASSED");
             }
-            catch (Exception ex) { Assert.Fail(ex.Message); }
+            catch (Exception ex)
+            {
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message);
+            }
         }
 
         [Test]
-        public void TCAddJewelryToCart()
+        public void TC_5_AddJewelryToCart()
         {
-            try
+            ExtentTest test = report.CreateTest("TEST CASE: Add Product to Cart");
+            try 
             {
-                PageHome.OpenWebsite(driver);
-                PageLogin.Login(driver);
-                PageJewelry.SelectCategoryJewelry(driver);
-                PageJewelry.ChangeView(driver);
                 PageJewelry.AddProduct(session, driver);
+                test.Pass("TEST CASE PASSED");
             }
-            catch (Exception ex) { Assert.Fail(ex.Message); }
+            catch (Exception ex)
+            {
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message); 
+            }
         }
 
         [Test]
-        public void TCCheckoutProducts()
+        public void TC_6_CheckoutProducts()
         {
+            ExtentTest test = report.CreateTest("TEST CASE: Checkout Cart");
             try
             {
-                PageHome.OpenWebsite(driver);
-                PageLogin.Login(driver);
-                PageJewelry.SelectCategoryJewelry(driver);
-                PageJewelry.ChangeView(driver);
-                PageJewelry.AddProduct(session, driver);
                 PageCart.CheckoutCart(session, driver);
+                test.Pass("TEST CASE PASSED");
             }
-            catch (Exception ex) { Assert.Fail(ex.Message); }
+            catch (Exception ex)
+            {
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message); 
+            }
         }
 
         [Test]
-        public void TCHomeLogout()
+        public void TC_7_HomeLogout()
         {
-            try
+            ExtentTest test = report.CreateTest("TEST CASE: Go to Home Page and Logout");
+            try 
             {
-                PageHome.OpenWebsite(driver);
-                PageLogin.Login(driver);
-                PageJewelry.SelectCategoryJewelry(driver);
-                PageJewelry.ChangeView(driver);
-                PageJewelry.AddProduct(session, driver);
-                PageCart.CheckoutCart(session, driver);
                 PageHome.LogoClickLogoutClick(driver);
+                test.Pass("TEST CASE PASSED");
             }
-            catch (Exception ex) { Assert.Fail(ex.Message); }
+            catch (Exception ex)
+            {
+                test.Fail(ex.Message);
+                Assert.Fail(ex.Message);
+            }
         }
 
         [OneTimeTearDown]
@@ -110,6 +143,8 @@ namespace Capstone_Project
         {
             session.Dispose();
             driver.Dispose();
+            report.Flush();
+            report = null;
         }
     }
 }

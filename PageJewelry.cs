@@ -28,7 +28,6 @@ namespace Capstone_Project
 
         public static void ChangeView(IWebDriver driver)
         {
-            Thread.Sleep(1000);
             GlobalFunctions.PopulateSelect(driver, "products-viewmode", "List", false);
         }
 
@@ -62,8 +61,6 @@ namespace Capstone_Project
 
             GlobalFunctions.ClickOnAPattern(1, "7_clc_add_to_crt.png", session);
 
-            Thread.Sleep(500);
-
             GlobalFunctions.FindElement(
                 driver,
                 @"#topcartlink > a > span.cart-label",
@@ -71,8 +68,6 @@ namespace Capstone_Project
                 false,
                 true
             );
-
-            Thread.Sleep(500);
 
             if (driver.Url != Constants.CART_PAGE_URL)
             {
@@ -83,8 +78,6 @@ namespace Capstone_Project
                     $"Expected: '{Constants.CART_PAGE_URL}' "
                 );
             }
-
-            Thread.Sleep(1000);
         }
     }
 }

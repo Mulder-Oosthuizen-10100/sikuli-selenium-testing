@@ -29,8 +29,6 @@ namespace Capstone_Project
                 true
             );
 
-            Thread.Sleep(500);
-
             GlobalFunctions.FindElement(
                 driver,
                 @"body > div.master-wrapper-page > div.master-wrapper-content > div.header > div.header-links-wrapper > div.header-links > ul > li:nth-child(2) > a",
@@ -38,8 +36,6 @@ namespace Capstone_Project
                 false,
                 true
             );
-
-            Thread.Sleep(2000);
         }
     }
 }
