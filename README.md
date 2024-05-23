@@ -22,52 +22,41 @@ The following website will be used to conduct the test cases.
 
 ## How It Works
 1. The OneTimeSetup function is called and the session, driver, and report objects are created.
-2. The test cases are executed/tested and reported.
-3. The OneTimeTearDown function is called and the session, driver and report objects are destroyed.
+2. The test cases are executed/tested one by one and one after the other.
+3. If a test cases passes it will be reported as a passed test.
+4. If a test cases fails it will be reported as a failed test case and an exception message will be attached.
+5. The OneTimeTearDown function is called and the session, driver and report objects are destroyed.
 
 ## Usage
-Configure the project configuration to use your specified details and run all test cases.
+Use the configuration file to configure your username and password. Once configured you may run all the test cases. Because this is automated software, there is nothing much for you to do other than configuration.
 
 ## Test Cases
-Here is a list of all 7 test cases, each with more detail on what the test case does.
+Here is the list of all 7 test cases, each with more detail on what the test case does.
 
 ### Open Home Page
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will open the test website and verify the correct website is opened by validating the page title.
 
 ### Login to Website
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will click the login link and verify the correct page is opened. Once the page is verified the username and password will be entered and the user will be logged in. Once logged in the username of the user will be verified.
 
 ### Select Product Category - Jewelry
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will click on the jewelry category link and verify that the correct page is opened by validating the page url.
 
 ### Change Jewelry View
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will change the grid view of all the jewelry products to a list view of all the products.
 
 ### Select Create Your Own Jewelry
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will click on the create your own product in the product list. Once the page opens the desired product information is entered and the product is added to the cart by clicking on the add to cart button.
 
 ### Checkout Cart
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will enter the postal information and click on the checkout button. 
 
 ### Go to Home Page and Logout
-<details><summary><b>Show Detail</b></summary>
-This test case opens the base URL and then compates the page title with the configure result.
-</details>
+This test case will click on the page logo to go to the home page and then click on the logout link.
 
 ## Reports
-The report after all the test cases have completed is a basic report that shows all the test cases. It will show if the test case passed or failed and if a test case faild it will show the error message with it.
+The report, after all the test cases have completed, is a basic report that shows the outcome of all the test cases. It will show if a test case passed or failed and if a test case failed it will show the error message.
 
 ## Configuration
 1. User name: ``` private static readonly string _USERNAME = @"addyourusernamehere"; ```
+2. Password: ``` private static readonly string _PASSWORD = @"addyourpasswordhere"; ```
